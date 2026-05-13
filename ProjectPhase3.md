@@ -462,4 +462,6 @@ This phase 3 extends the database design by introducing queries. They expand the
 - https://www.visual-paradigm.com/features/database-design-with-erd-tools/
 - https://sqlfiddle.com/
 - Visual Studio Code (Windows OS)
+- -MySQLFiddle (Testing)
+- MariaDB (Testing)
 
