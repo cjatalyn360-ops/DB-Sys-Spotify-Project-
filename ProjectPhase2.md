@@ -455,11 +455,11 @@ This phase 3 extends the database design by introducing queries. They expand the
 # 10. Appendix
 
 ## ER Diagram
-Removed due to technical issues(same as Phase 1)
+
+<img width="3037" height="1527" alt="Project Phase 1_ ER Diagrams (1)" src="https://github.com/user-attachments/assets/6b7020e4-f7d1-46f8-8a5e-5375bdb800f8" />
 
 ## External Tools
-https://www.visual-paradigm.com/features/database-design-with-erd-tools/
-https://sqlfiddle.com/
-Visual Studio Code (Windows OS)
-
+- https://www.visual-paradigm.com/features/database-design-with-erd-tools/
+- https://sqlfiddle.com/
+- Visual Studio Code (Windows OS)
 
