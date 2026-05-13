@@ -15,6 +15,8 @@
 | 5/12/26 | 1.0.0 | Initial Phase 0 proposal |
 | 5/12/26 | 1.1.0 | Refined scope of project and preliminary model |
 | 5/12/26 | 1.2.0 | Phase 1 ER model development |
+| 5/12/26 | 1.2.1 | Phase 1 grammar changes |
+| 5/13/26 | 1.2.2 | Phase 1 ER model final version |
 
 ---
 
@@ -39,7 +41,7 @@ This phase build upon the project proposal with an Entity-Relationship (ER) desi
 
 # 2. Entity-Relationship (ER) Diagram Overview
 
-The system is designed using a ER model consisting of approximately 15 entities(maybe more as project grows). The model includes core music data (songs, albums, artists), user interaction data (playlists, listening history, follows), and system data (subscriptions, payments+methods, genres).
+The system is designed using a ER model consisting of 15 entities(maybe more as project grows). The model includes core music data (songs, albums, artists), user interaction data (playlists, listening history, follows), and system data (subscriptions, payments+methods, genres).
 
 ER diagrams in this project will represent the following:
 - Entities with primary keys and attributes
