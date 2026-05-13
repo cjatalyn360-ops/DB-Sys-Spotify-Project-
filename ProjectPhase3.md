@@ -512,7 +512,7 @@ Several security and access control practices would be important for the Spotify
 External secrets management tools such as HashiCorp Vault could help securely manage database credentials instead of storing passwords directly in source code. Audit logging would also be important for tracking access to sensitive tables such as User, Subscription, and ListeningHistory. Monitoring login attempts, schema changes, and administrator actions could help identify suspicious behavior or security issues.
 
 ## Follow up Questions
-Some follow-up questions I still have include how large companies securely rotate credentials across distributed systems, how audit logs are stored and protected at scale, and how security policies are enforced consistently across cloud and on-premise database environments.
+Some follow-up questions I still have include how large companies securely rotate credentials across distributed systems, how audit logs are stored and protected at scale, and how security policies are enforced consistently across cloud and in person database environments.
 
 ---
 
