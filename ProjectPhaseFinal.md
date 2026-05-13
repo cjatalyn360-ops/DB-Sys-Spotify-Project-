@@ -21,7 +21,7 @@
 | 5/13/26 | 1.4.0 | Phase 3 SQL queries and strategic insights added |
 | 5/13/26 | 1.4.1 | Integrated Exploration Topic 1: Testing, Monitoring, and Validation |
 | 5/13/26 | 1.4.2 | Integrated Exploration Topic 2: Security and Access Control |
-| 5/13/26 | 1.4.2 | Final System Overview and Cleanup |
+| 5/13/26 | 1.5.0 | Final System Overview and Cleanup |
 ---
 
 # Table of Contents
