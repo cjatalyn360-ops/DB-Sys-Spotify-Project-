@@ -275,4 +275,4 @@ Website where ER Diagram was designed: https://www.visual-paradigm.com/features/
 
 ## ER Diagram
 
-<img width="3037" height="1651" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/357c345b-f7e7-45a3-8701-e0d36d166ec6" />
+<img width="3037" height="1530" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/8de2153f-81f5-412d-9694-ec9b0f960c41" />
