@@ -4,7 +4,7 @@
 **Author:** Connor Prout  
 **Course:** CSCI-C 442 Database Systems  
 **Date:** May 12, 2026  
-**Version:** 1.2.0  
+**Version:** 1.2.2  
 
 ---
 
@@ -231,6 +231,7 @@ ER diagrams in this project will represent the following:
 | Song | Genre | belongs to | M:1 |
 | Podcast | Episode | contains | 1:M |
 | User | Subscription | has | 1:1 |
+| User | Podcast Episode | listens to | 1:M |
 
 ---
 
