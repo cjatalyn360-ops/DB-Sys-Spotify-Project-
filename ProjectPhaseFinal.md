@@ -44,7 +44,11 @@
 
 # 1. Introduction
 
-This phase builds upon the previous phase 2 additions of use cases through the integration of aggregate functions, grouping, joins, and nested queries. These use cases define how the database will be used and help validate whether the current ER model properly supports real-world interactions in a music streaming system.
+This document represents the final version of the Spotify Music Streaming Database System project. The project was developed throughout multiple phases beginning with the initial proposal and continuing through ER modeling, use case analysis, SQL query development, testing research, and security research.
+
+The goal of the system is to model the core functionality of a modern music streaming platform using relational database design principles. The database supports users, artists, albums, songs, playlists, subscriptions, podcasts, and streaming activity while maintaining proper relationships, normalization, and scalability considerations.
+
+This final submission combines all previous project phases into a single living document intended to clearly explain the system design, implementation considerations, and supporting research.
 
 ---
 
@@ -273,6 +277,8 @@ Modeled as a separate entity to support:
 - PlaylistSong must reference valid Playlist and Song IDs
 - Episode must belong to exactly one Podcast
 - Genre must be assigned to Song
+- User email addresses should be unique
+- Playlist song positions should remain unique within a playlist
 
 ---
 
@@ -400,7 +406,7 @@ This query retrieves users who have created the highest number of playlists usin
     ON User.UserID = Playlist.UserID
     GROUP BY User.Username
     ORDER BY PlaylistCount DESC;
-    Strategic Insight
+
 ### Strategic Insight
 This query can help identify highly active users on the platform. Users who create many playlists are likely more engaged and may be good candidates for premium subscription promotions or social/community features.
 
@@ -414,7 +420,7 @@ This query calculates the average duration of songs grouped by genre.
     JOIN Genre
     ON Song.GenreID = Genre.GenreID
     GROUP BY Genre.GenreName;
-    Strategic Insight
+
 ### Strategic Insight
 This information could help analysts understand listening trends across genres. For example, some genres may generally contain shorter songs while others contain longer tracks. This may influence playlist generation or recommendation behavior.
 
@@ -429,7 +435,7 @@ This query uses GROUP BY and HAVING to identify artists followed by more than fi
     ON Artist.ArtistID = ArtistFollow.ArtistID
     GROUP BY Artist.ArtistName
     HAVING COUNT(ArtistFollow.UserID) > 5;
-    Strategic Insight
+
 ### Strategic Insight
 This query identifies artists with strong user engagement. Spotify could use this information for homepage recommendations, promotional campaigns, or featured artist sections.
 
@@ -520,6 +526,15 @@ Some follow-up questions I still have include how large companies securely rotat
 
 # 11. Final System Overview
 
+The Spotify Music Streaming Database System was designed to model the core functionality of a modern music streaming platform using relational database principles. Throughout the project, the system evolved from an initial proposal into a more complete ER-based database design supporting users, artists, albums, songs, playlists, subscriptions, podcasts, and streaming history.
+
+The final ER model contains 15 interconnected entities with multiple one-to-many and many-to-many relationships resolved through associative entities. The design supports common streaming platform operations such as playlist management, artist following, podcast organization, subscription tracking, and historical listening analytics.
+
+Additional phases expanded the project through realistic use cases, SQL query development, aggregation and nested query analysis, and research into database monitoring, testing, validation, security, and access control tools. These additions helped demonstrate how the database could operate in a real-world production environment.
+
+The database structure was designed with scalability and normalization in mind. Separating streaming history, playlist relationships, podcast episodes, and subscription data into dedicated entities improves maintainability and reduces redundancy. The project also considered future expansion areas such as recommendation systems, social features, collaborative playlists, and advertisement systems.
+
+Overall, this project demonstrates the planning and foundational database architecture required for a large-scale streaming application while applying concepts learned throughout the course.
 
 
 
@@ -540,6 +555,6 @@ This final phase of the project focused on presentation, cleanup of syntax and v
 - https://www.visual-paradigm.com/features/database-design-with-erd-tools/
 - https://sqlfiddle.com/
 - Visual Studio Code (Windows OS)
-- -MySQLFiddle (Testing)
+- MySQLFiddle (Testing)
 - MariaDB (Testing)
 
