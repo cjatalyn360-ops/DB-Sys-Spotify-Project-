@@ -549,7 +549,7 @@ This final phase of the project focused on presentation, cleanup of syntax and v
 
 ## ER Diagram
 
-<img width="3037" height="1527" alt="Project Phase 1_ ER Diagrams (1)" src="https://github.com/user-attachments/assets/6b7020e4-f7d1-46f8-8a5e-5375bdb800f8" />
+<img width="2185" height="1554" alt="Project Final Phase ER" src="https://github.com/user-attachments/assets/bf1d2183-8eb6-487b-bfe1-04d289614522" />
 
 ## External Tools
 - https://www.visual-paradigm.com/features/database-design-with-erd-tools/
