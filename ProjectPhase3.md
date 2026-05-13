@@ -369,6 +369,7 @@ Episode titles and durations
     JOIN PodcastEpisode ON Podcast.PodcastID = PodcastEpisode.PodcastID
     WHERE Podcast.PodcastID = [given_podcast_id];
 
+---
 
 # 8. Phase 3: SQL Queries & Strategic Insights  
 
@@ -450,9 +451,9 @@ This query uses a nested query to retrieve users who have listened to songs belo
 ### Strategic Insight
 This query helps identify users interested in specific genres of music. The platform could use this information for targeted recommendations, advertisements, curated playlists, or genre-specific notifications.
 
-# 9. Conclusion
+---
 
-# 10. Exploration Topic 1: Testing, Monitoring, and Validation
+# 9. Exploration Topic 1: Testing, Monitoring, and Validation Research
 
 ## Amazon CloudWatch and AWS Performance Insights
 Amazon CloudWatch and AWS Performance Insights are monitoring tools used with relational
@@ -488,8 +489,34 @@ Some follow up questions I would ask about these tools is how these monitoring t
 millions of streaming events, and what strategies are commonly used to also efficiently optimize
 performance
 
-# 11. Exploration Topic 2: Security and Access Control
+---
 
+# 10. Exploration Topic 2: Security and Access Control Research
+
+## HashiCorp Vault
+
+HashiCorp Vault is a security platform designed to manage secrets, encryption keys, and sensitive credentials for applications and databases. It supports relational databases such as PostgreSQL, MySQL, and MariaDB through dynamic credential generation and secure authentication methods. One of Vault’s major features is its ability to generate temporary database credentials instead of storing permanent usernames and passwords directly inside applications. Additional security features include encryption, secrets rotation, audit logging, access policies, and integration with identity providers and cloud platforms. Vault is commonly used in enterprise cloud systems, financial institutions, and large-scale infrastructure environments where protecting credentials and sensitive data is critical.
+
+For the Spotify Music Streaming Database System project, Vault could be used to securely manage database credentials and API secrets. Instead of storing passwords directly in application code, temporary credentials could be generated dynamically. This would reduce the risk of credential leaks and improve security for administrators and developers accessing the database system.
+
+## AWS Identity and Access Management (IAM) + Amazon RDS Security
+
+AWS IAM and Amazon RDS security features provide access control and protection for cloud-hosted relational databases such as PostgreSQL, MySQL, and MariaDB. IAM allows administrators to define role-based permissions for users, services, and applications accessing the database environment. Amazon RDS also supports encryption at rest and in transit, automated backups, IP whitelisting through security groups, and audit logging features. Multi-factor authentication (MFA) and integration with monitoring systems such as CloudWatch further improve security and visibility into database access activity. These tools are widely used in enterprise cloud applications, healthcare systems, financial services, and platforms handling large amounts of user data.
+
+For the Spotify Music Streaming Database System, IAM roles could help separate access levels between administrators, developers, analysts, and regular users. Encryption would help protect sensitive user information such as email addresses, passwords, and subscription details. Audit logs could also monitor who accesses sensitive tables or modifies important records within the database.
+
+## Applying Security and Access Control to the Project
+
+Several security and access control practices would be important for the Spotify Music Streaming Database System. User accounts should use role-based permissions so that regular users, developers, analysts, and administrators only have access to the data and actions necessary for their role. Sensitive data such as passwords, email addresses, subscription information, and authentication credentials should be encrypted and protected from unauthorized access.
+
+External secrets management tools such as HashiCorp Vault could help securely manage database credentials instead of storing passwords directly in source code. Audit logging would also be important for tracking access to sensitive tables such as User, Subscription, and ListeningHistory. Monitoring login attempts, schema changes, and administrator actions could help identify suspicious behavior or security issues.
+
+## Follow up Questions
+Some follow-up questions I still have include how large companies securely rotate credentials across distributed systems, how audit logs are stored and protected at scale, and how security policies are enforced consistently across cloud and on-premise database environments.
+
+---
+
+# 11. Conclusion
 This phase 3 extends the database design by introducing queries. They expand the database project by demonstrating the use of joins, aggregations, grouping, HAVING clauses, WHERE clauses, ordering, and nested queries. In the real world this project also shows how companies can use these techniques to provide valuable business insights related to their user engagement, music popularity, artist performance, and listening behavior of users.
 
 ---
