@@ -274,5 +274,6 @@ This Phase 1 mainly defined the project scope and was built upon the project pro
 Website where ER Diagram was designed: https://www.visual-paradigm.com/features/database-design-with-erd-tools/
 
 ## ER Diagram
+<img width="3037" height="1528" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/371b3971-3cf3-4c65-a501-3ee403266305" />
 
-<img width="3037" height="1530" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/8de2153f-81f5-412d-9694-ec9b0f960c41" />
+
