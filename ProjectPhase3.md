@@ -19,6 +19,8 @@
 | 5/13/26 | 1.2.2 | Phase 1 ER model final version |
 | 5/13/26 | 1.3.0 | Phase 2 use cases and query requirements added |
 | 5/13/26 | 1.4.0 | Phase 3 SQL queries and strategic insights added |
+| 5/13/26 | 1.4.1 | Integrated Exploration Topic 1: Testing, Monitoring, and Validation |
+| 5/13/26 | 1.4.2 | Integrated Exploration Topic 2: Security and Access Control |
 ---
 
 # Table of Contents
@@ -30,9 +32,11 @@
 5. Design Justifications  
 6. Constraints  
 7. Phase 2: Use Cases & Query Requirements
-8. Phase 3: SQL Queries & Strategic Insights  
-9. Conclusion  
-10. Appendix (ER Diagram Reference)  
+8. Phase 3: SQL Queries & Strategic Insights
+9. Exploration Topic 1: Testing, Monitoring, and Validation
+10. Exploration Topic 2: Security and Access Control
+11. Conclusion  
+12. Appendix (ER Diagram Reference)  
 
 ---
 
@@ -448,11 +452,49 @@ This query helps identify users interested in specific genres of music. The plat
 
 # 9. Conclusion
 
+# 10. Exploration Topic 1: Testing, Monitoring, and Validation
+
+## Amazon CloudWatch and AWS Performance Insights
+Amazon CloudWatch and AWS Performance Insights are monitoring tools used with relational
+database systems such as PostgreSQL, MySQL, and MariaDB through Amazon RDS.
+CloudWatch allows administrators to monitor database metrics which includes things like CPU
+usage, memory consumption, and storage utilization. From Amazons official website, AWS
+Performance Insights is described to focus more on database query performance and to help
+identify slow queries, bottlenecks, and heavy workloads that affect the system.
+For my Spotify Music Streaming Database System project, these tools could help monitor
+database activity related to playlists, listening history, and user streaming behavior. Storage
+monitoring would also help track the growth of streaming data over time as more users and songs
+are added to the system.
+## Percona Monitoring and Management (PMM)
+Percona Monitoring and Management (PMM) is an open-source monitoring platform designed
+for relational database systems including MySQL, PostgreSQL, and MariaDB. PMM provides
+dashboards for monitoring query performance, database health, replication status, and server
+activity. One of its most useful features is Query Analytics, which helps developers identify
+inefficient SQL queries and optimize database performance. Many organizations that use open-
+source infrastructure rely on PMM because it offers advanced monitoring capabilities without
+requiring expensive commercial licenses.
+For my project, PMM could be used to monitor streaming activity and playlist creation as the
+database grows larger. And since its open-source, there is no out of pocket charge for me.
+Overall, it’s another tool to optimize searches for songs, artists, playlists, and podcast episodes as
+efficiently as possible.
+## Applying Testing, Monitoring, and Validation to the Project
+One important testing practice that could be applied would be validating playlist functionality to
+ensure songs are correctly added, removed, and retrieved in the proper order.
+Monitoring would primarily focus on database growth, active connections, and listening-history
+activity. Since streaming systems generate large amounts of data, monitoring storage usage and
+slow-running queries would be especially important. A good practice would be to maintain a
+backup before modifying the database structure.
+Some follow up questions I would ask about these tools is how these monitoring tools scale to
+millions of streaming events, and what strategies are commonly used to also efficiently optimize
+performance
+
+# 11. Exploration Topic 2: Security and Access Control
+
 This phase 3 extends the database design by introducing queries. They expand the database project by demonstrating the use of joins, aggregations, grouping, HAVING clauses, WHERE clauses, ordering, and nested queries. In the real world this project also shows how companies can use these techniques to provide valuable business insights related to their user engagement, music popularity, artist performance, and listening behavior of users.
 
 ---
 
-# 10. Appendix
+# 12. Appendix
 
 ## ER Diagram
 
