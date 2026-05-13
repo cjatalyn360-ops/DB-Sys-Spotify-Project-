@@ -1,10 +1,10 @@
-# Music Streaming Database System Proposal
+# Music Streaming Database System Proposal — Phase 1
 
 **Name of System:** Spotify Music Streaming Database System  
 **Author:** Connor Prout  
 **Course:** CSCI-C 442 Database Systems  
 **Date:** May 12, 2026  
-**Version:** 1.0.0  
+**Version:** 1.2.0  
 
 ---
 
@@ -13,309 +13,266 @@
 | Date | Version | Note |
 |---|---|---|
 | 5/12/26 | 1.0.0 | Initial Phase 0 proposal |
+| 5/12/26 | 1.1.0 | Refined scope of project and preliminary model |
+| 5/12/26 | 1.2.0 | Phase 1 ER model development |
 
 ---
 
 # Table of Contents
 
 1. Introduction  
-   - Purpose  
-   - Project Scope  
-   - Intended Audience  
-
-2. High-Level System Overview  
-   - System Functionality  
-   - Key Use Cases  
-
-3. Preliminary Data Model  
-   - Entities and Attributes  
-   - Relationships  
-
-4. Conclusion
-
-5. Appendix
+2. Entity-Relationship (ER) Diagram Overview  
+3. Entities and Data Dictionary  
+4. Relationship Summary (Cardinality)  
+5. Design Justifications  
+6. Constraints  
+7. Conclusion  
+8. Appendix (ER Diagram Reference)  
 
 ---
 
 # 1. Introduction
 
-## Purpose
-
-The purpose of the Spotify Music Streaming Database System is to design and build a database capable of supporting a large-scale music streaming platform. The database will manage users, songs, albums, artists, playlists, subscriptions, and more as the project develops.
-
-The system is intended to efficiently store and retrieve music-related data while effetively showing relationships between entities.
+This phase build upon the project proposal with an Entity-Relationship (ER) design for a music streaming database system modeled after Spotify. The goal is to define a structured and normalized database capable of supporting users, music content, playlists, subscriptions, and user interaction tracking.
 
 ---
 
-## Project Scope
+# 2. Entity-Relationship (ER) Diagram Overview
 
-### What the system covers
-- User account management
-- Music library management
-- Artists and albums
-- Playlist creation and management
-- Song streaming history
-- User likes/saved songs
--
+The system is designed using a ER model consisting of approximately 15 entities(maybe more as project grows). The model includes core music data (songs, albums, artists), user interaction data (playlists, listening history, follows), and system data (subscriptions, payments+methods, genres).
 
-### What the system does NOT cover:
-- Audio file storage implementation
-- Music recommendation algorithms
-- Real-time streaming infrastructure
-- Payment processing systems
-- Frontend/mobile application development
+ER diagrams in this project will represent the following:
+- Entities with primary keys and attributes
+- Relationships between entities
+- Cardinality constraints (1:1, 1:M, M:N)
+- Associative entities for resolving many-to-many relationships
 
 ---
 
-## Intended Audience
+# 3. Entities and Data Relationships
 
-### End Users
-Listeners who stream music, create playlists, follow artists, and manage accounts.
-
-### Developers
-Backend developers integrating application features with the database system.
-
-### Administrators
-System administrators responsible for maintaining platform data integrity and monitoring usage.
-
-### Business Analysts
-Personnel analyzing streaming trends, artist popularity, and user engagement statistics.
+## User
+- **Description:** Represents a listener using the platform
+- **PK:** UserID
+- Attributes:
+  - Username
+  - Email
+  - Password
+  - DateCreated
+  - Country
 
 ---
 
-# 2. High-Level System Overview
-
-## System Functionality
-
-The Spotify Music Streaming Database System will:
-- Store user account and profile information
-- Manage artists, albums, songs, and podcasts
-- Track playlists created by users
-- Record listening history and song interactions
-- Support followers for artists and playlists
-- Store subscription information for premium users
-- Maintain relationships between songs, albums, and artists
+## Artist
+- **Description:** Music creators who release albums and songs
+- **PK:** ArtistID
+- Attributes:
+  - ArtistName
+  - Genre
+  - MonthlyListeners
+  - Biography
 
 ---
 
-## Key Use Cases
-
-### 1. User Registration & Login
-Users create accounts, log in, and manage profile information.
-
-### 2. Music Streaming
-Users stream songs and podcasts from the platform.
-
-**Example:**  
-A user searches for a song and streams it from an album page.
-
-### 3. Playlist Creation
-Users create playlists and add or remove songs.
-
-### 4. Artist Following
-Users follow artists to receive updates about new music releases.
-
-### 5. Library Management
-Users save songs, albums, and playlists to their personal library.
-
-### 6. Subscription Management
-The platform tracks whether users are using free or premium accounts.
+## Album
+- **Description:** Collection of songs released by an artist
+- **PK:** AlbumID
+- Attributes:
+  - Title
+  - ReleaseDate
+  - AlbumType
+- FK:
+  - ArtistID
 
 ---
 
-# 3. Preliminary Data Model
-
-This section will contain any entities, attributes, and relationships for the database system shown through an ERD.
-
----
-
-## Entities and Attributes
-
-### User
-**Attributes:**
-- UserID (PK)
-- Username
-- Email
-- Password
-- DateCreated
-- Country
-- SubscriptionType
-
-**Relationships:**
-- Creates Playlists
-- Streams Songs
-- Follows Artists
-- Saves Songs
+## Song
+- **Description:** Individual track available for streaming
+- **PK:** SongID
+- Attributes:
+  - Title
+  - Duration
+  - ReleaseDate
+- FK:
+  - AlbumID
+  - GenreID
 
 ---
 
-### Artist
-**Attributes:**
-- ArtistID (PK)
-- ArtistName
-- Genre
-- MonthlyListeners
-- Biography
-
-**Relationships:**
-- Creates Albums
-- Performs Songs
+## Playlist
+- **Description:** User-created collection of songs
+- **PK:** PlaylistID
+- Attributes:
+  - PlaylistName
+  - CreationDate
+  - Visibility
+- FK:
+  - UserID
 
 ---
 
-### Album
-**Attributes:**
-- AlbumID (PK)
-- Title
-- ReleaseDate
-- AlbumType
-- ArtistID (FK)
-
-**Relationships:**
-- Contains Songs
+## PlaylistSong (Associative Entity)
+- **Description:** Resolves M:N relationship between Playlist and Song
+- Attributes:
+  - PlaylistID (FK)
+  - SongID (FK)
+  - DateAdded
+  - PositionInPlaylist
 
 ---
 
-### Song
-**Attributes:**
-- SongID (PK)
-- Title
-- Duration
-- Genre
-- ReleaseDate
-- AlbumID (FK)
-
-**Relationships:**
-- Belongs to Album
-- Appears in Playlists
-- Streamed by Users
+## SavedSong
+- **Description:** Songs saved by a user to their library
+- Attributes:
+  - SaveID (PK)
+  - UserID (FK)
+  - SongID (FK)
+  - DateSaved
 
 ---
 
-### Playlist
-**Attributes:**
-- PlaylistID (PK)
-- PlaylistName
-- CreationDate
-- Visibility
-- UserID (FK)
-
-**Relationships:**
-- Contains Songs
-- Owned by User
+## ListeningHistory
+- **Description:** Tracks user streaming activity over time
+- Attributes:
+  - HistoryID (PK)
+  - UserID (FK)
+  - SongID (FK)
+  - Timestamp
+  - DeviceID (FK)
 
 ---
 
-### PlaylistSong
-(Associative entity for many-to-many relationship)
-
-**Attributes:**
-- PlaylistID (FK)
-- SongID (FK)
-- DateAdded
-- PositionInPlaylist
-
----
-
-### Subscription
-**Attributes:**
-- SubscriptionID (PK)
-- UserID (FK)
-- PlanType
-- StartDate
-- EndDate
-- PaymentStatus
+## ArtistFollow
+- **Description:** Tracks users following artists
+- Attributes:
+  - FollowID (PK)
+  - UserID (FK)
+  - ArtistID (FK)
+  - FollowDate
 
 ---
 
-### ListeningHistory
-**Attributes:**
-- HistoryID (PK)
-- UserID (FK)
-- SongID (FK)
-- Timestamp
-- DeviceUsed
+## PlaylistFollow
+- **Description:** Tracks users following playlists
+- Attributes:
+  - PlaylistFollowID (PK)
+  - UserID (FK)
+  - PlaylistID (FK)
+  - FollowDate
 
 ---
 
-### Podcast
-**Attributes:**
-- PodcastID (PK)
-- PodcastTitle
-- Category
-- ReleaseDate
-- HostName
+## Subscription
+- **Description:** Represents user subscription plans
+- **PK:** SubscriptionID
+- Attributes:
+  - UserID (FK)
+  - PlanType
+  - StartDate
+  - EndDate
+  - PaymentStatus
 
 ---
 
-### SavedSong
-**Attributes:**
-- SaveID (PK)
-- UserID (FK)
-- SongID (FK)
-- DateSaved
+## Podcast
+- **Description:** Podcast shows available on the platform
+- **PK:** PodcastID
+- Attributes:
+  - PodcastTitle
+  - Category
+  - HostName
+  - ReleaseDate
 
 ---
 
-# Relationships
-
-## User — Playlist
-**One-to-Many**  
-A user can create multiple playlists.
-
----
-
-## Artist — Album
-**One-to-Many**  
-An artist can create multiple albums.
+## PodcastEpisode
+- **Description:** Individual episodes of a podcast
+- **PK:** EpisodeID
+- Attributes:
+  - EpisodeTitle
+  - Duration
+  - ReleaseDate
+- FK:
+  - PodcastID
 
 ---
 
-## Album — Song
-**One-to-Many**  
-An album contains multiple songs.
+## Genre
+- **Description:** Classification for songs and artists
+- **PK:** GenreID
+- Attributes:
+  - GenreName
 
 ---
 
-## Playlist — Song
-**Many-to-Many**  
-A playlist contains many songs, and songs may appear in many playlists.
-
-Implemented through the `PlaylistSong` associative entity.
-
----
-
-## User — Song (Listening History)
-**Many-to-Many**  
-Users can stream many songs, and songs can be streamed by many users.
-
-Implemented through the `ListeningHistory` entity.
+## Device
+- **Description:** Device used for streaming activity
+- **PK:** DeviceID
+- Attributes:
+  - DeviceType
+  - OperatingSystem
+  - UserID
 
 ---
 
-## User — Artist
-**Many-to-Many**  
-Users may follow multiple artists, and artists may have many followers.
+# 4. Relationship Summary (Cardinality)
+
+| Entity A | Entity B | Relationship | Cardinality |
+|----------|----------|--------------|-------------|
+| User | Playlist | creates | 1:M |
+| Playlist | Song | contains | M:N |
+| User | Song | listens to | M:N |
+| User | Artist | follows | M:N |
+| Playlist | User | followed by | M:N |
+| Artist | Album | creates | 1:M |
+| Album | Song | contains | 1:M |
+| Song | Genre | belongs to | M:1 |
+| Podcast | Episode | contains | 1:M |
+| User | Subscription | has | 1:1 |
 
 ---
 
-## User — SavedSong
-**One-to-Many**  
-A user can save many songs to their library.
+# 5. Design Justifications
+
+## Associative Entities
+Many-to-many relationships such as Playlist–Song and User–Artist require associative entities to:
+- Maintain normalization
+- Allow additional attributes (e.g., DateAdded, FollowDate)
+
+## Listening History
+Separated into its own entity to support:
+- Time-based tracking
+- Device-specific analytics
+- Historical user behavior analysis
+
+## Subscription Model
+Modeled as a separate entity to support:
+- Plan upgrades/downgrades
+- Payment tracking
+- Future expansion into billing systems
 
 ---
 
-# 4. Future Expansion Ideas
+# 6. Constraints
 
-Potential future features for later project phases include:
-- Friend/follower social system
-- Collaborative playlists
-- Song recommendation system
-- Concert/event tracking
-- Lyrics support
-- Podcast episode tracking
-- Advertisement management for free users
-- Music label management
+- A Song must belong to exactly one Album
+- A Playlist must belong to exactly one User
+- A Subscription must belong to exactly one User
+- PlaylistSong must reference valid Playlist and Song IDs
+- Episode must belong to exactly one Podcast
+- Genre must be assigned to Song
 
-# 5. Conclusion
---- 
+---
+
+# 7. Conclusion
+
+This Phase 1 mainly defined the project scope and was built upon the project proposal to meet entity # requirements, as well as including the first iteration of an ER diagram for the project.
+
+---
+
+# 8. Appendix
+Website where ER Diagram was designed: https://www.visual-paradigm.com/features/database-design-with-erd-tools/
+
+## ER Diagram
+
+<img width="3037" height="1651" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/357c345b-f7e7-45a3-8701-e0d36d166ec6" />
