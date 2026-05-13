@@ -284,13 +284,11 @@ Allow a user to view all songs contained in a specific playlist.
 List of songs including title, duration, and order in playlist
 
 ### Pseudo-SQL
-```sql
-SELECT Song.Title, Song.Duration, PlaylistSong.PositionInPlaylist
-FROM Playlist
-JOIN PlaylistSong ON Playlist.PlaylistID = PlaylistSong.PlaylistID
-JOIN Song ON PlaylistSong.SongID = Song.SongID
-WHERE Playlist.PlaylistID = [given_playlist_id];
-```
+    SELECT Song.Title, Song.Duration, PlaylistSong.PositionInPlaylist
+    FROM Playlist
+    JOIN PlaylistSong ON Playlist.PlaylistID = PlaylistSong.PlaylistID
+    JOIN Song ON PlaylistSong.SongID = Song.SongID
+    WHERE Playlist.PlaylistID = [given_playlist_id];
 
 ## Use Case 2: Retrieve listening history for a user
 
@@ -304,13 +302,11 @@ Show all songs a user has listened to along with timestamps and devices.
 List of songs with timestamp and device used
 
 ### Pseudo-SQL
-```sql
-SELECT Song.Title, ListeningHistory.Timestamp, Device.DeviceType
-FROM ListeningHistory
-JOIN Song ON ListeningHistory.SongID = Song.SongID
-JOIN Device ON ListeningHistory.DeviceID = Device.DeviceID
-WHERE ListeningHistory.UserID = [given_user_id];
-```
+    SELECT Song.Title, ListeningHistory.Timestamp, Device.DeviceType
+    FROM ListeningHistory
+    JOIN Song ON ListeningHistory.SongID = Song.SongID
+    JOIN Device ON ListeningHistory.DeviceID = Device.DeviceID
+    WHERE ListeningHistory.UserID = [given_user_id];
 
 ## Use Case 3: Find all albums by a specific artist
 
@@ -318,15 +314,13 @@ WHERE ListeningHistory.UserID = [given_user_id];
 Retrieve all albums released by a given artist.
 
 ### Expected Output
--List of album titles and release dates
+List of album titles and release dates
 
 ### Pseudo-SQL
-```sql
-SELECT Album.Title, Album.ReleaseDate
-FROM Artist
-JOIN Album ON Artist.ArtistID = Album.ArtistID
-WHERE Artist.ArtistID = [given_artist_id];
-```
+    SELECT Album.Title, Album.ReleaseDate
+    FROM Artist
+    JOIN Album ON Artist.ArtistID = Album.ArtistID
+    WHERE Artist.ArtistID = [given_artist_id];
 
 ## Use Case 4: Get all songs in an album
 
@@ -337,12 +331,10 @@ Display all songs belonging to a specific album.
 Song titles and durations
 
 ### Pseudo-SQL
-```sql
-SELECT Song.Title, Song.Duration
-FROM Album
-JOIN Song ON Album.AlbumID = Song.AlbumID
-WHERE Album.AlbumID = [given_album_id];
-```
+    SELECT Song.Title, Song.Duration
+    FROM Album
+    JOIN Song ON Album.AlbumID = Song.AlbumID
+    WHERE Album.AlbumID = [given_album_id];
 
 ## Use Case 5: Find all artists a user follows
 
@@ -353,12 +345,10 @@ Show all artists followed by a specific user.
 Artist names and genres
 
 ### Pseudo-SQL
-```sql
-SELECT Artist.ArtistName, Artist.Genre
-FROM ArtistFollow
-JOIN Artist ON ArtistFollow.ArtistID = Artist.ArtistID
-WHERE ArtistFollow.UserID = [given_user_id];
-```
+    SELECT Artist.ArtistName, Artist.Genre
+    FROM ArtistFollow
+    JOIN Artist ON ArtistFollow.ArtistID = Artist.ArtistID
+    WHERE ArtistFollow.UserID = [given_user_id];
 
 ## Use Case 6: Retrieve podcast episodes
 
@@ -369,12 +359,10 @@ Get all episodes for a specific podcast.
 Episode titles and durations
 
 ### Pseudo-SQL
-```sql
-SELECT PodcastEpisode.EpisodeTitle, PodcastEpisode.Duration
-FROM Podcast
-JOIN PodcastEpisode ON Podcast.PodcastID = PodcastEpisode.PodcastID
-WHERE Podcast.PodcastID = [given_podcast_id];
-```
+    SELECT PodcastEpisode.EpisodeTitle, PodcastEpisode.Duration
+    FROM Podcast
+    JOIN PodcastEpisode ON Podcast.PodcastID = PodcastEpisode.PodcastID
+    WHERE Podcast.PodcastID = [given_podcast_id];
 
 
 # 8. Conclusion
