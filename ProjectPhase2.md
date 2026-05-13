@@ -374,7 +374,7 @@ This phase 2 extends the database design by introducing realistic use cases and 
 # 9. Appendix
 
 ## ER Diagram
-<img width="3037" height="1528" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/371b3971-3cf3-4c65-a501-3ee403266305" />
+Removed due to technical issues(same as Phase 1)
 
 ## External Tools
 https://www.visual-paradigm.com/features/database-design-with-erd-tools/
