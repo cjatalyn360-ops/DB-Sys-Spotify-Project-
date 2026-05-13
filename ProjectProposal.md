@@ -3,8 +3,8 @@
 **Name of System:** Spotify Music Streaming Database System  
 **Author:** Connor Prout  
 **Course:** CSCI-C 442 Database Systems  
-**Date:** May 12, 2026  
-**Version:** 1.2.2  
+**Date:** May 13, 2026  
+**Version:** 1.3.0 
 
 ---
 
@@ -17,6 +17,7 @@
 | 5/12/26 | 1.2.0 | Phase 1 ER model development |
 | 5/12/26 | 1.2.1 | Phase 1 grammar changes |
 | 5/13/26 | 1.2.2 | Phase 1 ER model final version |
+| 5/13/26 | 1.3.0 | Phase 2 use cases and query requirements added |
 
 ---
 
@@ -28,20 +29,21 @@
 4. Relationship Summary (Cardinality)  
 5. Design Justifications  
 6. Constraints  
-7. Conclusion  
-8. Appendix (ER Diagram Reference)  
+7. Phase 2: Use Cases & Query Requirements  
+8. Conclusion  
+9. Appendix (ER Diagram Reference)  
 
 ---
 
 # 1. Introduction
 
-This phase build upon the project proposal with an Entity-Relationship (ER) design for a music streaming database system modeled after Spotify. The goal is to define a structured and normalized database capable of supporting users, music content, playlists, subscriptions, and user interaction tracking.
+This phase builds upon the previous ER design + proposal + phase 1 by introducing the **use cases and query requirements** section. These use cases define how the database will be used in practice and help validate whether the current ER model properly supports real-world interactions in a music streaming system, as well as psuedocode for its future implementation.
 
 ---
 
 # 2. Entity-Relationship (ER) Diagram Overview
 
-The system is designed using a ER model consisting of 15 entities(maybe more as project grows). The model includes core music data (songs, albums, artists), user interaction data (playlists, listening history, follows), and system data (subscriptions, payments+methods, genres).
+The system is designed using a ER model consisting of 15 entities. The model includes core music data (songs, albums, artists), user interaction data (playlists, listening history, follows), and system data (subscriptions, payments+methods, genres).
 
 ER diagrams in this project will represent the following:
 - Entities with primary keys and attributes
@@ -267,16 +269,118 @@ Modeled as a separate entity to support:
 
 ---
 
-# 7. Conclusion
+# 7. Phase 2: Use Cases & Query Requirements
 
-This Phase 1 mainly defined the project scope and was built upon the project proposal to meet entity # requirements, as well as including the first iteration of an ER diagram for the project.
+## Use Case 1: Retrieve all songs in a user’s playlist
+
+### Objective
+Allow a user to view all songs contained in a specific playlist.
+
+### Assumptions
+- Playlist belongs to a valid user
+- Songs are linked through PlaylistSong associative entity
+
+### Expected Output
+List of songs including title, duration, and order in playlist
+
+### Pseudo-SQL
+SELECT Song.Title, Song.Duration, PlaylistSong.PositionInPlaylist
+FROM Playlist
+JOIN PlaylistSong ON Playlist.PlaylistID = PlaylistSong.PlaylistID
+JOIN Song ON PlaylistSong.SongID = Song.SongID
+WHERE Playlist.PlaylistID = [given_playlist_id];
+
+
+## Use Case 2: Retrieve listening history for a user
+
+### Objective
+Show all songs a user has listened to along with timestamps and devices.
+
+### Assumptions
+- ListeningHistory tracks all streaming events
+
+### Expected Output
+List of songs with timestamp and device used
+
+### Pseudo-SQL
+SELECT Song.Title, ListeningHistory.Timestamp, Device.DeviceType
+FROM ListeningHistory
+JOIN Song ON ListeningHistory.SongID = Song.SongID
+JOIN Device ON ListeningHistory.DeviceID = Device.DeviceID
+WHERE ListeningHistory.UserID = [given_user_id];
+
+## Use Case 3: Find all albums by a specific artist
+
+### Objective
+Retrieve all albums released by a given artist.
+
+### Expected Output
+-List of album titles and release dates
+
+### Pseudo-SQL
+SELECT Album.Title, Album.ReleaseDate
+FROM Artist
+JOIN Album ON Artist.ArtistID = Album.ArtistID
+WHERE Artist.ArtistID = [given_artist_id];
+
+## Use Case 4: Get all songs in an album
+
+### Objective
+Display all songs belonging to a specific album.
+
+### Expected Output
+Song titles and durations
+
+### Pseudo-SQL
+SELECT Song.Title, Song.Duration
+FROM Album
+JOIN Song ON Album.AlbumID = Song.AlbumID
+WHERE Album.AlbumID = [given_album_id];
+
+## Use Case 5: Find all artists a user follows
+
+### Objective
+Show all artists followed by a specific user.
+
+### Expected Output
+Artist names and genres
+
+### Pseudo-SQL
+SELECT Artist.ArtistName, Artist.Genre
+FROM ArtistFollow
+JOIN Artist ON ArtistFollow.ArtistID = Artist.ArtistID
+WHERE ArtistFollow.UserID = [given_user_id];
+
+## Use Case 6: Retrieve podcast episodes
+
+### Objective
+Get all episodes for a specific podcast.
+
+### Expected Output
+Episode titles and durations
+
+### Pseudo-SQL
+SELECT PodcastEpisode.EpisodeTitle, PodcastEpisode.Duration
+FROM Podcast
+JOIN PodcastEpisode ON Podcast.PodcastID = PodcastEpisode.PodcastID
+WHERE Podcast.PodcastID = [given_podcast_id];
+
+
+
+# 8. Conclusion
+
+This phase 2 extends the database design by introducing realistic use cases and query requirements. The existing ER model supports all identified queries without requiring major redesign. Will be using the existing structure for implementation in future phase.
 
 ---
 
-# 8. Appendix
-Website where ER Diagram was designed: https://www.visual-paradigm.com/features/database-design-with-erd-tools/
+# 9. Appendix
 
 ## ER Diagram
 <img width="3037" height="1528" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/371b3971-3cf3-4c65-a501-3ee403266305" />
+
+## External Tools
+https://www.visual-paradigm.com/features/database-design-with-erd-tools/
+https://sqlfiddle.com/
+Visual Studio Code (Windows OS)
 
 
