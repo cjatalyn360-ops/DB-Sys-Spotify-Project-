@@ -1,4 +1,4 @@
-# Music Streaming Database System Proposal — Phase 1
+# Music Streaming Database System Proposal — Phase 2
 
 **Name of System:** Spotify Music Streaming Database System  
 **Author:** Connor Prout  
