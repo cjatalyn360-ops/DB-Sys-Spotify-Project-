@@ -4,7 +4,7 @@
 **Author:** Connor Prout  
 **Course:** CSCI-C 442 Database Systems  
 **Date:** May 13, 2026  
-**Version:** 1.4.0
+**Version:** 1.5.0
 
 ---
 
@@ -21,6 +21,7 @@
 | 5/13/26 | 1.4.0 | Phase 3 SQL queries and strategic insights added |
 | 5/13/26 | 1.4.1 | Integrated Exploration Topic 1: Testing, Monitoring, and Validation |
 | 5/13/26 | 1.4.2 | Integrated Exploration Topic 2: Security and Access Control |
+| 5/13/26 | 1.4.2 | Final System Overview and Cleanup |
 ---
 
 # Table of Contents
@@ -35,8 +36,9 @@
 8. Phase 3: SQL Queries & Strategic Insights
 9. Exploration Topic 1: Testing, Monitoring, and Validation
 10. Exploration Topic 2: Security and Access Control
-11. Conclusion  
-12. Appendix (ER Diagram Reference)  
+11. Final System Overview 
+12. Conclusion  
+13. Appendix (ER Diagram Reference)  
 
 ---
 
@@ -516,12 +518,19 @@ Some follow-up questions I still have include how large companies securely rotat
 
 ---
 
-# 11. Conclusion
-This phase 3 extends the database design by introducing queries. They expand the database project by demonstrating the use of joins, aggregations, grouping, HAVING clauses, WHERE clauses, ordering, and nested queries. In the real world this project also shows how companies can use these techniques to provide valuable business insights related to their user engagement, music popularity, artist performance, and listening behavior of users.
+# 11. Final System Overview
+
+
+
 
 ---
 
-# 12. Appendix
+# 12. Conclusion
+This final phase of the project focused on presentation, cleanup of syntax and verification that all concepts and methods were explained properly and match the ER diagram.
+
+---
+
+# 13. Appendix
 
 ## ER Diagram
 
