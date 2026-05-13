@@ -216,8 +216,6 @@ Modeled as a separate entity to support:
 - Episode must belong to exactly one Podcast
 - Genre must be assigned to Song
 ---
-
-
 # 7. Phase 2: Use Cases & Query Requirements
 
 ## Use Case 1: Retrieve all songs in a user’s playlist
@@ -233,11 +231,11 @@ Allow a user to view all songs contained in a specific playlist.
 List of songs including title, duration, and order in playlist
 
 ### Pseudo-SQL
-    SELECT Song.Title, Song.Duration, PlaylistSong.PositionInPlaylist
-    FROM Playlist
-    JOIN PlaylistSong ON Playlist.PlaylistID = PlaylistSong.PlaylistID
-    JOIN Song ON PlaylistSong.SongID = Song.SongID
-    WHERE Playlist.PlaylistID = [given_playlist_id];
+SELECT Song.Title, Song.Duration, PlaylistSong.PositionInPlaylist
+FROM Playlist
+JOIN PlaylistSong ON Playlist.PlaylistID = PlaylistSong.PlaylistID
+JOIN Song ON PlaylistSong.SongID = Song.SongID
+WHERE Playlist.PlaylistID = [given_playlist_id]:
 
 ## Use Case 2: Retrieve listening history for a user
 
@@ -251,11 +249,11 @@ Show all songs a user has listened to along with timestamps and devices.
 List of songs with timestamp and device used
 
 ### Pseudo-SQL
-    SELECT Song.Title, ListeningHistory.Timestamp, Device.DeviceType
-    FROM ListeningHistory
-    JOIN Song ON ListeningHistory.SongID = Song.SongID
-    JOIN Device ON ListeningHistory.DeviceID = Device.DeviceID
-    WHERE ListeningHistory.UserID = [given_user_id];
+SELECT Song.Title, ListeningHistory.Timestamp, Device.DeviceType
+FROM ListeningHistory
+JOIN Song ON ListeningHistory.SongID = Song.SongID
+JOIN Device ON ListeningHistory.DeviceID = Device.DeviceID
+WHERE ListeningHistory.UserID = [given_user_id];
 
 ## Use Case 3: Find all albums by a specific artist
 
@@ -266,10 +264,10 @@ Retrieve all albums released by a given artist.
 List of album titles and release dates
 
 ### Pseudo-SQL
-    SELECT Album.Title, Album.ReleaseDate
-    FROM Artist
-    JOIN Album ON Artist.ArtistID = Album.ArtistID
-    WHERE Artist.ArtistID = [given_artist_id];
+SELECT Album.Title, Album.ReleaseDate
+FROM Artist
+JOIN Album ON Artist.ArtistID = Album.ArtistID
+WHERE Artist.ArtistID = [given_artist_id];
 
 ## Use Case 4: Get all songs in an album
 
@@ -280,10 +278,10 @@ Display all songs belonging to a specific album.
 Song titles and durations
 
 ### Pseudo-SQL
-    SELECT Song.Title, Song.Duration
-    FROM Album
-    JOIN Song ON Album.AlbumID = Song.AlbumID
-    WHERE Album.AlbumID = [given_album_id];
+SELECT Song.Title, Song.Duration
+FROM Album
+JOIN Song ON Album.AlbumID = Song.AlbumID
+WHERE Album.AlbumID = [given_album_id];
 
 ## Use Case 5: Find all artists a user follows
 
@@ -294,10 +292,10 @@ Show all artists followed by a specific user.
 Artist names and genres
 
 ### Pseudo-SQL
-    SELECT Artist.ArtistName, Artist.Genre
-    FROM ArtistFollow
-    JOIN Artist ON ArtistFollow.ArtistID = Artist.ArtistID
-    WHERE ArtistFollow.UserID = [given_user_id];
+SELECT Artist.ArtistName, Artist.Genre
+FROM ArtistFollow
+JOIN Artist ON ArtistFollow.ArtistID = Artist.ArtistID
+WHERE ArtistFollow.UserID = [given_user_id];
 
 ## Use Case 6: Retrieve podcast episodes
 
@@ -308,10 +306,10 @@ Get all episodes for a specific podcast.
 Episode titles and durations
 
 ### Pseudo-SQL
-    SELECT PodcastEpisode.EpisodeTitle, PodcastEpisode.Duration
-    FROM Podcast
-    JOIN PodcastEpisode ON Podcast.PodcastID = PodcastEpisode.PodcastID
-    WHERE Podcast.PodcastID = [given_podcast_id];
+SELECT PodcastEpisode.EpisodeTitle, PodcastEpisode.Duration
+FROM Podcast
+JOIN PodcastEpisode ON Podcast.PodcastID = PodcastEpisode.PodcastID
+WHERE Podcast.PodcastID = [given_podcast_id];
 
 
 
@@ -322,7 +320,7 @@ This phase 2 extends the database design by introducing realistic use cases and 
 # 9. Appendix
 
 ## ER Diagram
-<img width="3037" height="1528" alt="Project Phase 1_ ER Diagrams" src="https://github.com/user-attachments/assets/371b3971-3cf3-4c65-a501-3ee403266305" />
+Removed due to technical issue (same as phase 1 diagram)
 
 ## External Tools
 https://www.visual-paradigm.com/features/database-design-with-erd-tools/
